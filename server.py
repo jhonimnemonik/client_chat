@@ -1,8 +1,8 @@
 import socket
 import threading
 
-HOST = '127.0.0.1'
-PORT = 12345
+SERVER_HOST = '127.0.0.1'
+SERVER_PORT = 12345
 clients = []
 
 
@@ -35,9 +35,9 @@ def broadcast(message, sender_socket):
 
 def main():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((HOST, PORT))
+    server_socket.bind((SERVER_HOST, SERVER_PORT))
     server_socket.listen(50)
-    print(f"Сервер запущен! {HOST}:{PORT}")
+    print(f"Сервер запущен! {SERVER_HOST}:{SERVER_PORT}")
     while True:
         client_socket, addr = server_socket.accept()
         name = client_socket.recv(1024).decode('utf-8')
